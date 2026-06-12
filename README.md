@@ -54,24 +54,14 @@ DemoWebShop_Automation/
     └── test/
         └── java/
             ├── _DemoWebShop_/          # Core Automation Architecture (Tests & Elements)
-            │   ├── Parent.java
-            │   ├── US201_Elements.java
             │   ├── US201_Register_User.java
-            │   ├── US202_Elements.java
             │   ├── US202_Negative_Register_User.java
-            │   ├── US203_Elements.java
             │   ├── US203_Login.java
-            │   ├── US204_Elements.java
             │   ├── US204_Search_Order.java
-            │   ├── US205_Elements.java
             │   ├── US205_Product_Check_Under.java
             │   ├── US206_Check_Out_Order.java
-            │   ├── US206_Elements.java
-            │   ├── US207_Elements.java
             │   ├── US207_Negative_Check_Out.java
-            │   ├── US208_Elements.java
             │   ├── US208_Negative_Gift_Cards_and_Cupons.java
-            │   ├── US209_Elements.java
             │   └── US209_History_Orders.java
             │
             └── utility/                # Core Execution Engine Components
