@@ -10,14 +10,14 @@
 
 ## 📋 About The Project
 
-This repository contains a professional GUI test automation framework designed for the [Tricentis DemoWebShop](https://demowebshop.tricentis.com/) e-commerce platform. Built utilizing **Java** and **Selenium WebDriver**, the framework rigorously executes automated scripts for core retail features, encompassing positive/negative user registrations, shopping cart calculations, checkout workflows, and downstream document generation.
+This repository contains a robust GUI test automation framework developed for the [Tricentis DemoWebShop](https://demowebshop.tricentis.com/) e-commerce platform. Built with **Java** and **Selenium WebDriver**, the framework focuses on validating critical user journey checkpoints—from registration and negative authentication limits to multi-layered search algorithms, catalog specification checks, and end-to-end checkout cycles.
 
 ### ✨ Key Features
 
-- ✅ **Specification-Driven Coverage:** Comprehensive test mapping derived from functional user stories and acceptance criteria.
-- ✅ **Negative Boundary Testing:** Strict verification of input constraints (e.g., duplicate email registrations and invalid authentication triggers).
-- ✅ **End-to-End Checkout Pipeline:** Full automation of product selection, dynamic cart handling, billing details submission, and multi-stage checkout forms.
-- ✅ **Downstream Document Verification:** Automated handling of order history validation and invoice generation verification.
+- ✅ **User-Story Driven Architecture:** Test scripts directly aligned and validated against production execution patterns.
+- ✅ **Compact Package Design:** Elements repositories and execution scripts are maintained side-by-side within a single functional package for high cohesion.
+- ✅ **Dynamic UI Syncing:** Explicit wait parameters integrated natively inside the baseline `Parent.java` model to handle asynchronous loaders smoothly.
+- ✅ **Robust Boundary Testing:** Detailed validation coverage for edge cases, including duplicated identity forms and corrupted promotional fields.
 
 ## 🛠️ Tech Stack
 
@@ -25,47 +25,55 @@ This repository contains a professional GUI test automation framework designed f
 |:-----------|:--------|:--------|
 | **Java** | 21 | Programming Language |
 | **Selenium WebDriver** | 4.x | Browser Automation |
-| **Maven** | 3.2.5+ | Build & Dependency Management |
+| **Maven** | 3.2.5+ | Dependency and Build Lifecycle Management |
 
 ## 📝 Test Scenarios (User Stories)
 
-The project executes 9 business-critical user stories ensuring web application stability:
+The project executes 9 business-critical automation scenarios structured exactly according to the code definitions:
 
-| ID | User Story / Feature | Description |
+| ID | User Story / Test Script Class | Description |
 |:---|:-----------|:------------|
-| 🔑 **US_201** | Register User | Validates a successful user sign-up flow across mandatory demographic and credential fields. |
-| ❌ **US_202** | Negative Register User | Tests duplicate data constraints by asserting that trying to re-register with an existing email addresses triggers validation errors. |
-| 🔓 **US_203** | User Login | Verifies secure session establishment for a valid registered entity, ensuring the user email renders on the global navigation header. |
-| 🛒 **US_204** | Shopping Cart Control | Automates navigating product listing pages, selecting assets, adding them to the cart, and asserting dynamic pricing matrix calculations. |
-| 💳 **US_205** | Checkout Process | Simulates an E2E purchasing route by filling out shipping coordinates, method selections, and payment forms. |
-| 📄 **US_206** | Order History & Invoice | Enters the user account dashboard, parses the history grid to locate archived orders, and verifies invoice accessibility. |
-| 🔄 **US_207** | Account Update | Validates that an active user can modify their dynamic profile attributes and persist changes safely. |
-| 🔍 **US_208** | Product Search | Tests the multi-category search engine accuracy against boundary keywords and auto-suggestions. |
-| 📉 **US_209** | Filter & Sort Control | Verifies catalog sorting algorithms (Price, Name, Relevance) and category filtering components. |
+| 🔑 **US_201** | `US201_Register_User` | Validates a successful user sign-up flow across mandatory demographic and credential fields. |
+| ❌ **US_202** | `US202_Negative_Register_User` | Tests duplicate data constraints by asserting that trying to re-register with an existing email address triggers validation errors. |
+| 🔓 **US_203** | `US203_Login` | Verifies secure session establishment for a valid registered entity, ensuring profile link persistence. |
+| 🔍 **US_204** | `US204_Search_Order` | Tests the platform search index accuracy and item verification against target catalog keywords. |
+| 🛒 **US_205** | `US205_Product_Check_Under` | Controls internal product specifications, catalog data mapping, and item card integrity checks. |
+| 💳 **US_206** | `US206_Check_Out_Order` | Simulates a positive end-to-end purchasing route with billing, shipping, and order validation steps. |
+| ⚠️ **US_207** | `US207_Negative_Check_Out` | Negative checkout boundary validations handling empty profile inputs and missing verification steps. |
+| 🎟️ **US_208** | `US208_Negative_Gift_Cards_and_Cupons` | Validates robust UI error tooltip handling when supplying invalid inputs to gift cards and coupon promotion fields. |
+| 📦 **US_209** | `US209_History_Orders` | Navigates the active user account dashboard to cross-check transactional order logs and account history. |
 
 ## 📁 Project Structure
 
 ```text
 DemoWebShop_Automation/
 │
-├── 📄 pom.xml                          # Maven dependencies
+├── 📄 pom.xml                          # Maven configuration
 ├── 📄 README.md                        # Framework documentation
 └── src/
     └── test/
         └── java/
-            ├── US201_RegisterUser/             # Verification of user onboarding
-            ├── US202_NegativeRegisterUser/     # Boundary checks for duplicate identity
-            ├── US203_Login/                    # Session authorization flows
-            ├── US204_ShoppingCartControl/      # Cart inventory & balance checks
-            ├── US205_CheckoutProcess/          # End-to-end checkout execution
-            ├── US206_OrderHistoryAndInvoice/   # Profile order history & PDF validation
-            ├── US207_AccountUpdate/            # Dynamic profile updates
-            ├── US208_ProductSearch/            # Catalog search verifications
-            └── US209_FilterAndSortControl/     # Filter and catalog sorting tests
-```
-🏗️ Technical Architecture & Implementation
-🎯 Modular Workspace Organization: Test scripts are decoupled cleanly into distinct user-story packages (US201 to US209), preventing multi-thread interference and minimizing code dependencies.
-
-🔄 Asynchronous Sync Management: Leverages implicit and customized explicit waits within BaseDriver to manage dynamic checkout step animations without producing unstable results.
-
-🛡️ Document Delivery Control: US_206 automates complex profile dashboard grids, cross-checking that transactional metadata perfectly aligns with downstream invoice generations.
+            ├── _DemoWebShop_/          # Core Automation Architecture (Tests & Elements)
+            │   ├── Parent.java
+            │   ├── US201_Elements.java
+            │   ├── US201_Register_User.java
+            │   ├── US202_Elements.java
+            │   ├── US202_Negative_Register_User.java
+            │   ├── US203_Elements.java
+            │   ├── US203_Login.java
+            │   ├── US204_Elements.java
+            │   ├── US204_Search_Order.java
+            │   ├── US205_Elements.java
+            │   ├── US205_Product_Check_Under.java
+            │   ├── US206_Check_Out_Order.java
+            │   ├── US206_Elements.java
+            │   ├── US207_Elements.java
+            │   ├── US207_Negative_Check_Out.java
+            │   ├── US208_Elements.java
+            │   ├── US208_Negative_Gift_Cards_and_Cupons.java
+            │   ├── US209_Elements.java
+            │   └── US209_History_Orders.java
+            │
+            └── utility/                # Core Execution Engine Components
+                ├── BaseDriver.java
+                └── ConfigReader.java
