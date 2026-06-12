@@ -1,4 +1,4 @@
-# 🛍️ Tricentis DemoWebShop UI Test Automation Project
+# 🛍️DemoWebShop UI Test Automation Project
 
 ![Java](https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=java)
 ![Selenium](https://img.shields.io/badge/Selenium-4.x-green?style=for-the-badge&logo=selenium)
