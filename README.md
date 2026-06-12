@@ -1,4 +1,4 @@
-# 🛍️DemoWebShop UI Test Automation Project
+# 🛍️ DemoWebShop UI Test Automation Project
 
 ![Java](https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=java)
 ![Selenium](https://img.shields.io/badge/Selenium-4.x-green?style=for-the-badge&logo=selenium)
@@ -10,7 +10,7 @@
 
 ## 📋 About The Project
 
-This repository contains a professional GUI test automation framework designed for the [Tricentis DemoWebShop](https://demowebshop.tricentis.com/) e-commerce platform. Built utilizing **Java** and **Selenium WebDriver**, the framework rigorously executes automated scripts for core retail features, encompassing positive/negative user registrations, shopping cart calculations, checkout workflows, and downstream document generation (Invoice PDF downloads).
+This repository contains a professional GUI test automation framework designed for the [Tricentis DemoWebShop](https://demowebshop.tricentis.com/) e-commerce platform. Built utilizing **Java** and **Selenium WebDriver**, the framework rigorously executes automated scripts for core retail features, encompassing positive/negative user registrations, shopping cart calculations, checkout workflows, and downstream document generation.
 
 ### ✨ Key Features
 
@@ -29,16 +29,19 @@ This repository contains a professional GUI test automation framework designed f
 
 ## 📝 Test Scenarios (User Stories)
 
-The project executes 6 business-critical user stories ensuring web application stability:
+The project executes 9 business-critical user stories ensuring web application stability:
 
 | ID | User Story / Feature | Description |
 |:---|:-----------|:------------|
 | 🔑 **US_201** | Register User | Validates a successful user sign-up flow across mandatory demographic and credential fields. |
-| ❌ **US_202** | Negative Register User | Tests duplicate data constraints by asserting that trying to re-register with an existing email addresses safely triggers the 'The specified email already exists' validation message. |
+| ❌ **US_202** | Negative Register User | Tests duplicate data constraints by asserting that trying to re-register with an existing email addresses triggers validation errors. |
 | 🔓 **US_203** | User Login | Verifies secure session establishment for a valid registered entity, ensuring the user email renders on the global navigation header. |
 | 🛒 **US_204** | Shopping Cart Control | Automates navigating product listing pages, selecting assets, adding them to the cart, and asserting dynamic pricing matrix calculations. |
-| 💳 **US_205** | Checkout Process | Simulates an E2E purchasing route by filling out shipping coordinates, method selections, and payment forms until an order confirmation token is generated. |
-| 📄 **US_206** | Order History & Invoice | Enters the user account dashboard, parses the history grid to locate archived orders, and verifies the accessibility and download path of order invoices. |
+| 💳 **US_205** | Checkout Process | Simulates an E2E purchasing route by filling out shipping coordinates, method selections, and payment forms. |
+| 📄 **US_206** | Order History & Invoice | Enters the user account dashboard, parses the history grid to locate archived orders, and verifies invoice accessibility. |
+| 🔄 **US_207** | Account Update | Validates that an active user can modify their dynamic profile attributes and persist changes safely. |
+| 🔍 **US_208** | Product Search | Tests the multi-category search engine accuracy against boundary keywords and auto-suggestions. |
+| 📉 **US_209** | Filter & Sort Control | Verifies catalog sorting algorithms (Price, Name, Relevance) and category filtering components. |
 
 ## 📁 Project Structure
 
@@ -47,8 +50,6 @@ DemoWebShop_Automation/
 │
 ├── 📄 pom.xml                          # Maven dependencies
 ├── 📄 README.md                        # Framework documentation
-├── 📄 .gitignore                       # Resource exclusion filters
-│
 └── src/
     └── test/
         └── java/
@@ -58,13 +59,12 @@ DemoWebShop_Automation/
             ├── US204_ShoppingCartControl/      # Cart inventory & balance checks
             ├── US205_CheckoutProcess/          # End-to-end checkout execution
             ├── US206_OrderHistoryAndInvoice/   # Profile order history & PDF validation
-            │
-            └── utility/                        # Shared automation utilities
-                └── BaseDriver.java            # WebDriver instantiation & dynamic syncing rules
+            ├── US207_AccountUpdate/            # Dynamic profile updates
+            ├── US208_ProductSearch/            # Catalog search verifications
+            └── US209_FilterAndSortControl/     # Filter and catalog sorting tests
 ```
-
 🏗️ Technical Architecture & Implementation
-🎯 Modular Workspace Organization: Test scripts are decoupled cleanly into distinct user-story packages, preventing multi-thread interference and minimizing code dependencies.
+🎯 Modular Workspace Organization: Test scripts are decoupled cleanly into distinct user-story packages (US201 to US209), preventing multi-thread interference and minimizing code dependencies.
 
 🔄 Asynchronous Sync Management: Leverages implicit and customized explicit waits within BaseDriver to manage dynamic checkout step animations without producing unstable results.
 
